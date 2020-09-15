@@ -4,3 +4,7 @@
 ```
   python3 manage.py runserver
 ```
+
+### Database
+* SQLite DB
+
