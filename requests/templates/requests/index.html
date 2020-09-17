@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>List of Requests</h1>
+
+{% for request in requests %}
+  <a href="{% url 'detail' request.id %}">
+    <div class="card">
+      <div class="card-content">
+        <span>{{ request.id }}</span>
+        <p>Request Type: {{ request.requestType }}</p>
+        <p>Request Time: {{ request.requestTime }}</p>
+        <p>Request Comment: {{ request.comment }}</p>
+      </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}
