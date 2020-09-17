@@ -1,9 +1,14 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from .models import Request
 
+class RequestCreate(CreateView):
+    model = Request
+    fields = '__all__'
+
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'requests/index.html')
 
 def about(request):
     return render(request, 'about.html')
