@@ -7,6 +7,10 @@ class RequestCreate(CreateView):
     model = Request
     fields = '__all__'
 
+class RequestUpdate(UpdateView):
+    model = Request
+    fields = ['comment']
+
 def home(request):
     return render(request, 'requests/index.html')
 
