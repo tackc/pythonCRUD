@@ -2,5 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Request
 
-def index(request):
-    return HttpResponse("Welcome to the requests page.")
+def home(request):
+    return render(request, 'home.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def requests_index(request):
+    requests = Request.objects.all()
+    return render(request, 'requests/index.html', { 'requests': requests })
+
+def requests_detail(request, request_id):
+    request = Request.objects.get(id=request_id)
+    return render(request, 'requests/detail.html', { 'request': request })
