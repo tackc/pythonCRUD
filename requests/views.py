@@ -11,6 +11,10 @@ class RequestUpdate(UpdateView):
     model = Request
     fields = ['comment']
 
+class RequestDelete(DeleteView):
+    model = Request
+    success_url = '/requests/'
+
 def home(request):
     return render(request, 'requests/index.html')
 
