@@ -28,3 +28,22 @@ def requests_index(request):
 def requests_detail(request, request_id):
     request = Request.objects.get(id=request_id)
     return render(request, 'requests/detail.html', { 'request': request })
+
+# Referenced from http://zetcode.com/django/httprequest/
+def data(request):
+    path = request.path
+    scheme = request.scheme
+    method = request.method
+    address = request.META['REMOTE_ADDR']
+    user_agent = request.META['HTTP_USER_AGENT']
+
+    msg = f'''
+        <html>
+        Path: {path}<br>
+        Scheme: {scheme}<br>
+        Method: {method}<br>
+        Address: {address}<br>
+        User agent: {user_agent}<br>
+        </html>
+    '''
+    return HttpResponse(msg, content_type='text/html', charset='utf-8')
