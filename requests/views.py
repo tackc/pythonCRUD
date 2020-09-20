@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .models import Request
 import datetime
 from django.utils import timezone
+from cpuinfo import get_cpu_info_json
 
 class RequestCreate(CreateView):
     model = Request
