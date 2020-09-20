@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>List of Requests</h1>
+<h2>List of Most Recent 10 Requests</h2>
 
 {% for request in requests %}
   <a href="{% url 'detail' request.id %}">
