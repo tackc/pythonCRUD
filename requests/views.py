@@ -25,14 +25,14 @@ def about(request):
     return render(request, 'about.html')
 
 def requests_index(request):
-    path = request.path
     method = request.method
     time = datetime.datetime.now(tz=timezone.utc)
 
-    r = Request.objects.create(requestType=method, requestTime=time)
+    Request.objects.create(requestType=method, requestTime=time)
+    json = get_cpu_info_json()
 
     requests = Request.objects.order_by("-id")[:10]
-    return render(request, 'requests/index.html', { 'requests': requests })
+    return render(request, 'requests/index.html', { 'requests': requests, 'json': json })
 
 def requests_detail(request, request_id):
     request = Request.objects.get(id=request_id)
