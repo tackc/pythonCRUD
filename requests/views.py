@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from .models import Request
+import datetime
+from django.utils import timezone
 
 class RequestCreate(CreateView):
     model = Request
