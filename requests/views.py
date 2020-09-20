@@ -24,7 +24,13 @@ def about(request):
     return render(request, 'about.html')
 
 def requests_index(request):
-    requests = Request.objects.all()
+    path = request.path
+    method = request.method
+    time = datetime.datetime.now(tz=timezone.utc)
+
+    r = Request.objects.create(requestType=method, requestTime=time)
+
+    requests = Request.objects.order_by("-id")[:10]
     return render(request, 'requests/index.html', { 'requests': requests })
 
 def requests_detail(request, request_id):
