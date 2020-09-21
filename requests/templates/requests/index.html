@@ -2,12 +2,13 @@
 {% block content %}
 
 <h2>Your CPU Details:</h2>
-<p>{{ cpuInfo }}</p>
-{% for detail in cpuInfo %}
-  <div>
-    <p>{{ detail.python_version }}</p>
-  </div>
-{% endfor %}
+<table>
+  {% for key, value in cpuInfo.items %}
+    <tr>
+      <td>{{ key }}:</td> <td>{{ value }}</td>
+    </tr>
+  {% endfor %}
+</table>
 
 <h2>List of Most Recent 10 Requests</h2>
 
