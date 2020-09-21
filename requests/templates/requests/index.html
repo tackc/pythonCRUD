@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h2>Your CPU Details:</h2>
+<p>{{ cpuInfo }}</p>
+{% for detail in cpuInfo %}
+  <div>
+    <p>{{ detail.python_version }}</p>
+  </div>
+{% endfor %}
+
 <h2>List of Most Recent 10 Requests</h2>
 
 {% for request in requests %}
