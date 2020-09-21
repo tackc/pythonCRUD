@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from .models import Request
 import datetime
 from django.utils import timezone
-from cpuinfo import get_cpu_info_json
+from cpuinfo import get_cpu_info
 
 class RequestCreate(CreateView):
     model = Request
@@ -29,10 +29,10 @@ def requests_index(request):
     time = datetime.datetime.now(tz=timezone.utc)
 
     Request.objects.create(requestType=method, requestTime=time)
-    json = get_cpu_info_json()
+    cpuInfo = get_cpu_info
 
     requests = Request.objects.order_by("-id")[:10]
-    return render(request, 'requests/index.html', { 'requests': requests, 'json': json })
+    return render(request, 'requests/index.html', { 'requests': requests, 'cpuInfo': cpuInfo })
 
 def requests_detail(request, request_id):
     request = Request.objects.get(id=request_id)
