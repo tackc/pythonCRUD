@@ -35,6 +35,8 @@ def requests_index(request):
     return render(request, 'requests/index.html', { 'requests': requests, 'cpuInfo': cpuInfo })
 
 def requests_detail(request, request_id):
-    request = Request.objects.get(id=request_id)
-    return render(request, 'requests/detail.html', { 'request': request })
-    
+    try:
+        details = Request.objects.get(id=request_id)
+    except Request.DoesNotExist:
+        raise Http404
+    return render(request, 'requests/detail.html', { 'details': details })
