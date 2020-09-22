@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import Request
 import datetime
 from django.utils import timezone
